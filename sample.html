@@ -248,6 +248,24 @@
                 display: block;
             }
 
+            /* Mobile menu items alignment */
+            .nav-menu li {
+                width: 100%;
+                text-align: left;
+            }
+
+            .nav-menu a {
+                width: 100%;
+                text-align: left;
+                padding: 1rem 0;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            /* Remove yellow underline on mobile */
+            .nav-menu a::after {
+                display: none;
+            }
+
             /* Mobile dropdown styling */
             .dropdown {
                 width: 100%;
@@ -260,6 +278,7 @@
                 width: 100%;
                 padding: 1rem 0;
                 border-bottom: 1px solid #e0e0e0;
+                cursor: pointer;
             }
 
             .dropdown > a::before {
@@ -322,6 +341,10 @@
             .dropdown:hover > a::before {
                 border-top-color: #46495A;
                 transform: none;
+            }
+
+            .dropdown:hover > a::after {
+                display: none;
             }
         }
 
@@ -444,6 +467,7 @@
                 // Only prevent default and toggle on mobile
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
+                    e.stopPropagation();
                     dropdown.classList.toggle('active');
                     
                     // Close other dropdowns
