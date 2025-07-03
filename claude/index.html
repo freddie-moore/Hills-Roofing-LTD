@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hills Roofing LTD - Your Trusted Croydon Roofer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #46495A;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #FFC107;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+        }
+
+        .cta-button {
+            background: #FFC107;
+            color: #46495A;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #46495A;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(70, 73, 90, 0.7), rgba(70, 73, 90, 0.7)), url('assets/hero.webp');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            background: #FFC107;
+            color: #46495A;
+            padding: 18px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        }
+
+        /* Introduction Section */
+        .introduction {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .founder-image {
+            width: 100%;
+            height: 300px;
+            background: #F2F2F2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #46495A;
+            font-size: 1.2rem;
+        }
+
+        .intro-text h3 {
+            color: #46495A;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .intro-text ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.intro-text li {
+    margin-bottom: 0.5rem;
+}
+
+
+        
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #F2F2F2;
+        }
+
+        .services h2 {
+            text-align: center;
+            color: #46495A;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center all rows including last */
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Base card styling */
+.service-card {
+    flex: 0 1 300px; /* Default: max 3 per row on large screens */
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect (optional but modern) */
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive: phones (1 per row) */
+@media (max-width: 599px) {
+    .service-card {
+        flex: 0 1 100%;
+    }
+}
+
+/* Responsive: tablets (2 per row) */
+@media (min-width: 600px) and (max-width: 1023px) {
+    .service-card {
+        flex: 0 1 45%;
+    }
+}
+
+/* Responsive: desktops (3 per row) */
+@media (min-width: 1024px) {
+    .service-card {
+        flex: 0 1 30%;
+    }
+}
+
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #FFC107;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h4 {
+            color: #46495A;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card a {
+            color: #46495A;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid #FFC107;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .accreditations, .reviews {
+            margin-bottom: 4rem;
+        }
+
+        .trust-section h3 {
+            text-align: center;
+            color: #46495A;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+       .accreditation-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .accreditation-item {
+            max-height: 100px;    /* control logo height */
+            width: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .accreditation-item:hover {
+            transform: scale(1.05);
+        }
+
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #F2F2F2;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stars {
+            color: #FFC107;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            color: #46495A;
+        }
+
+        .review-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            padding: 80px 0;
+            background: #F2F2F2;
+        }
+
+        .contact-form-section h2 {
+            text-align: center;
+            color: #46495A;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #46495A;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFC107;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #46495A;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #3a3d4a;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .accreditation-logos {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                margin: 0 20px;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/logo.jpg" alt="Hills Roofing LTD Logo" class="logo-img">
+            </div>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#services">Services</a>
+                        <div class="dropdown-content">
+                            <a href="roof-installation.html">Roof Installation</a>
+                            <a href="#roof-repair">Roof Repair</a>
+                            <a href="#gutters">Gutters</a>
+                            <a href="#chimneys">Chimneys</a>
+                            <a href="#maintenance">Maintenance</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="areas-lewisham.html">Areas Covered</a>
+                        <div class="dropdown-content">
+                            <a href="areas-lewisham.html">Lewisham</a>
+                            <a href="areas-lewisham.html">Croydon</a>
+                            <a href="areas-lewisham.html">Purley</a>
+                            <a href="areas-lewisham.html">Beckenham</a>
+                            <a href="areas-lewisham.html">Bromley</a>
+                            <a href="areas-lewisham.html">Tunbridge Wells</a>
+                            <a href="areas-lewisham.html">Kent</a>
+                        </div>
+                    </li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact-form" class="cta-button">Get a Free Quote</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Trusted Croydon Roofer</h1>
+                <h2>Quality Craftsmanship, Guaranteed Results.</h2>
+                <a href="#contact-form" class="hero-cta">Get Your Free Estimate</a>
+            </div>
+        </div>
+    </section>  
+
+    <!-- Introduction Section -->
+    <section class="introduction" id="about">
+        <div class="container">
+            <div class="intro-content">
+                <div class="founder-image" style="background-image: url('assets/aboutus.webp'); background-size: cover; background-position: center;"></div>
+
+                <div class="text-wrapper">
+                    <div class="intro-text">
+                        <h3>About Us</h3>
+                        <p>Hills Roofing LTD is a leading provider of professional roofing services for both commercial and domestic properties across Croydon, South East London and Kent. Founded by Connor Hill, we are committed to delivering exceptional quality, guaranteed workmanship, and unparalleled customer service on every project, big or small.</p>
+                    </div>
+
+                    <div class="intro-text">
+                        <h3>Why Choose Hills Roofing</h3>
+                        <p>We built our reputation on trust and results. When you choose us as your local roofing company, you get a team that is experienced and founder-led, with Connor bringing over 10 years of hands-on expertise to every project. We are fully certified and approved, holding qualifications such as CSCS and SSI training, Bauder Approved Contractor status, Construction Line Gold membership, and Asbestos Awareness certification—giving you complete peace of mind. Most importantly, we back every new installation with robust guarantees so that you can be assured your roof is built to last.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Core Roofing Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>New Roof Installations</h4>
+                    <a href="roof-installation.html">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Roof Repairs</h4>
+                    <a href="roof-repair.html">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4>Gutters & Drainage</h4>
+                    <a href="#gutters.html">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4>Chimney Services</h4>
+                    <a href="#chimneys.html">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Inspections & Maintenance</h4>
+                    <a href="maintenance.html">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Credibility Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="accreditations">
+                <h3>Our Certifications & Accreditations</h3>
+                <div class="accreditation-logos">
+                    <img src="assets/bauderapproved.jpeg" alt="Bauder Approved Logo" class="accreditation-item" />
+                    <img src="assets/constructionlinegold.png" alt="Construction Line Gold Logo" class="accreditation-item" />
+                    <img src="assets/cscs.png" alt="CSCS Logo" class="accreditation-item" />
+                    <img src="assets/ukata.webp" alt="UKATA Logo" class="accreditation-item" />
+                    <img src="assets/nvq.png" alt="NVQ Logo" class="accreditation-item" />
+                </div>
+            </div>
+
+            <div class="reviews">
+                <h3>What Our Customers Say</h3>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <div class="testimonial-text">"I cannot fault this company. From start to finish Conor has been fantastic. Communication has been clear and work has been done to such a high standard. Conor has been extremely professional, reliable and trustworthy. I'd use this company again."</div>
+                        <div class="customer-name">Location: Westerham</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <div class="testimonial-text">"Connor and his team did a great job replacing our roof. They were prompt in coming out to give us a quote. Their price was fair. They were able to start the job quite quickly. They took care of everything the skip, scaffoldings and clean up afterwards. I will definitely hire them again for any roofing, gutter, jobs."</div>
+                        <div class="customer-name">Location: Croydon</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <div class="testimonial-text">"Connor was recommended by a friend to repair a roof leak. He responded quick and the repair was done efficiently. I will definitely recommend, and use his service if needed in the future."</div>
+                        <div class="customer-name">Location: Sevenoaks</div>
+                    </div>
+                </div>
+
+                <div class="review-link">
+                    <a href="https://www.checkatrade.com/trades/hillsroofingltd" target="_blank" rel="noopener noreferrer" class="cta-button">Read More Reviews on Checkatrade</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <h2>Get Your Free, No-Obligation Quote Today</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service of Interest</label>
+                    <select id="service" name="service">
+                        <option value="">Please select a service...</option>
+                        <option value="roof-installation">Roof Installation</option>
+                        <option value="roof-repair">Roof Repair</option>
+                        <option value="gutters">Gutters</option>
+                        <option value="chimneys">Chimneys</option>
+                        <option value="maintenance">Inspections & Maintenance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your roofing needs..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you shortly.');
+        });
+    </script>
+</body>
+</html>
