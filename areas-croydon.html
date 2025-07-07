@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Roof Installation Services - Hills Roofing LTD</title>
+    <title>Expert Roofing Services in Croydon | Hills Roofing LTD</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
@@ -276,14 +276,9 @@
             }
         }
 
-
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(70, 73, 90, 0.75), rgba(70, 73, 90, 0.75)), url('assets/roof-installation.webp');
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            width: 100%;
+            background: linear-gradient(135deg, #46495A, #2c2f3a);
             height: 50vh;
             display: flex;
             align-items: center;
@@ -293,9 +288,17 @@
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Main Content */
@@ -304,185 +307,238 @@
             background: white;
         }
 
-        .content-wrapper {
-            display: grid;
-            grid-template-columns: 6fr 4fr;
-            gap: 4rem;
-            align-items: start;
+        .intro-section {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .left-column h2 {
-            color: #46495A;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .left-column p {
-            font-size: 1.1rem;
+        .intro-section p {
+            font-size: 1.2rem;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
             color: #555;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .services-grid {
+        /* Services Section */
+        .services-section {
+            margin-bottom: 60px;
+        }
+
+        .services-section h2 {
+            color: #46495A;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .service-item {
-            background: #F2F2F2;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #FFC107;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .service-item h4 {
-            color: #46495A;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-item p {
-            font-size: 0.95rem;
-            color: #666;
-            margin: 0;
-        }
-
-        .why-choose-section {
-            margin-top: 3rem;
-        }
-
-        .why-choose-section h3 {
-            color: #46495A;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .benefits-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .benefits-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
+            gap: 2rem;
+        } */
+        .services-grid {
             display: flex;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: center; /* Center all rows including last */
+    gap: 2rem;
+    padding: 2rem 0;
         }
 
-        .benefits-list li:last-child {
-            border-bottom: none;
-        }
-
-        .benefits-list i {
-            color: #FFC107;
-            margin-right: 1rem;
-            font-size: 1.2rem;
-        }
-
-        /* Right Column - FAQ */
-        .right-column {
+        .service-card {
+            flex: 0 1 300px;
             background: #F2F2F2;
             padding: 2rem;
-            border-radius: 10px;
-            height: fit-content;
-            position: sticky;
-            top: 120px;
-        }
-
-        .right-column h3 {
-            color: #46495A;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            border-radius: 12px;
             text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #FFC107;
         }
 
-        .faq-item {
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #46495A;
             margin-bottom: 1rem;
         }
 
-        .faq-question {
-            background: white;
-            padding: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
+        .service-card h3 {
             color: #46495A;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            background: #46495A;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
             transition: background-color 0.3s;
         }
 
-        .faq-question:hover {
-            background: #f8f9fa;
+        .service-link:hover {
+            background: #FFC107;
+            color: #46495A;
         }
 
-        .faq-answer {
-            max-height: 0;
+        /* Portfolio Section */
+        .portfolio-section {
+            background: #F2F2F2;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .portfolio-section h3 {
+            color: #46495A;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .portfolio-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .portfolio-image {
+            background: #46495A;
+            height: 300px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background: white;
-            border-radius: 0 0 5px 5px;
+             background: url('assets/croydon-job.webp');
+            background-size: cover;      /* Ensures the image covers the whole box */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
         }
 
-        .faq-answer.active {
-            max-height: 200px;
+
+        .portfolio-details {
             padding: 1rem;
         }
 
-        .faq-toggle {
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-
-        .faq-toggle.active {
-            transform: rotate(45deg);
-        }
-
-        /* CTA Banner */
-        .cta-banner {
-            background: #F2F2F2;
-            color: #46495a;
-            padding: 60px 0;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .cta-banner h2 {
-            font-size: 2.5rem;
+        .portfolio-details h4 {
+            color: #46495A;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .cta-banner p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .portfolio-details p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
         }
 
-        .cta-banner-button {
-            background: #FFC107;
+        .project-specs {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #FFC107;
+        }
+
+        .project-specs strong {
             color: #46495A;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            margin-bottom: 60px;
+        }
+
+        .testimonial-card {
+            background: #46495A;
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .testimonial-card::before {
+            content: '"';   
+            font-size: 6rem;
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            color: #FFC107;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #FFC107;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #F2F2F2;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #46495A;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-main-button {
+            background: #46495A;
+            color: white;
             padding: 18px 36px;
             border-radius: 8px;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             display: inline-block;
             transition: all 0.3s;
         }
 
-        .cta-banner-button:hover {
+        .cta-main-button:hover {
+            background: #FFC107;
+            color: #46495A;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+            box-shadow: 0 8px 25px rgba(70, 73, 90, 0.3);
         }
 
         /* Mobile Styles */
@@ -508,31 +564,36 @@
             }
 
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            .content-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .right-column {
-                position: static;
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cta-banner h2 {
-                font-size: 2rem;
+            .portfolio-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .cta-banner p {
+            .testimonial-card {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .testimonial-text {
                 font-size: 1.1rem;
             }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
         }
-    
+
         /* Footer Styles */
         .footer {
             background: #46495A;
@@ -707,7 +768,7 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="areas-lewisham.html">Areas Covered</a>
+                        <a>Areas Covered</a>
                         <div class="dropdown-content">
                             <a href="areas-lewisham.html">Lewisham</a>
                             <a href="areas-croydon.html">Croydon</a>
@@ -732,7 +793,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Professional Roof Installation Services</h1>
+                <h1>Croydon's Premier Roofing Company</h1>
+                <p class="hero-subtitle">Professional roofing services in Croydon and surrounding areas</p>
             </div>
         </div>
     </section>
@@ -740,210 +802,91 @@
     <!-- Main Content -->
     <section class="main-content">
         <div class="container">
-            <div class="content-wrapper">
-                <!-- Left Column -->
-                <div class="left-column">
-                    <h2>Comprehensive Roof Installation</h2>
-                    <p>At Hills Roofing, we specialize in complete roof installation services across South East London & Kent. With over 10 years of experience and a team of highly qualified professionals, we ensure every installation meets the highest standards of quality and durability.</p>
-                    
-                    <p>Our installation process begins with a thorough assessment of your property's structural requirements, followed by detailed planning and material selection. We work with premium materials and proven techniques to deliver roofing solutions that protect your home for decades to come.</p>
+            <!-- Intro Section -->
+            <div class="intro-section">
+                <p>Hills Roofing LTD is proud to offer our full range of professional roofing services to residents and businesses throughout <strong>Croydon</strong>. Please see below for more details.</p>
+            </div>
 
-                    <p>From traditional slate and tile installations to modern flat roofing systems and specialized applications, our comprehensive range of services covers every roofing need. Each project is completed with meticulous attention to detail, ensuring weatherproofing, energy efficiency, and aesthetic appeal.</p>
-
-                    <!-- Services Grid -->
-                    <div class="services-grid">
-                        <div class="service-item">
-                            <h4>Slate Roof Installation</h4>
-                            <p>Premium Welsh and Spanish slate installations with traditional craftsmanship techniques.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Tiled Roofing Installation</h4>
-                            <p>Clay and concrete tile systems for durability and classic aesthetic appeal.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Metal Roofing Installation</h4>
-                            <p>Steel and aluminum roofing systems for industrial and contemporary properties.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Green Roofing Installation</h4>
-                            <p>Eco-friendly living roof systems for sustainable building solutions.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Conservatory Roof Conversions</h4>
-                            <p>Transform your conservatory with solid roof conversions for year-round comfort.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Fibre Glass Roofing</h4>
-                            <p>GRP roofing systems offering excellent durability and waterproofing.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Rubber Roofing Installation</h4>
-                            <p>EPDM rubber roofing for flat and low-pitch applications.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Liquid Plastic Roofing</h4>
-                            <p>Seamless liquid waterproofing systems for complex roof shapes.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Warm Roof Construction</h4>
-                            <p>Energy-efficient warm roof systems for superior insulation performance.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Roof Lights Installation</h4>
-                            <p>Skylights and roof windows to bring natural light into your property.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Leadworks Installation</h4>
-                            <p>Traditional lead roofing and flashing for heritage and period properties.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Asphalt Roofing Installation</h4>
-                            <p>Durable and cost-effective asphalt roofing solutions for both residential and commercial properties.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Balcony Roofing Installation</h4>
-                            <p>Specialist balcony roof systems designed for waterproofing and long-term structural integrity.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Dry Ridge Installation</h4>
-                            <p>Secure dry ridge systems that offer superior ventilation and weather resistance for pitched roofs.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Dry Verge Installation</h4>
-                            <p>Maintenance-free dry verge units to protect gable ends and prevent tile dislodgement.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Felt Roofing Installation</h4>
-                            <p>Traditional felt roofing expertly laid for garages, sheds, and outbuildings with reliable sealing.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Glass Roof Installation</h4>
-                            <p>Modern glass roof installations to bring natural light into extensions, orangeries, and conservatories.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Hot Melt Roofing Installation</h4>
-                            <p>Seamless and durable hot melt systems ideal for inverted roofs and high-traffic areas.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Pitched Roofing Installation</h4>
-                            <p>Expertly installed pitched roofs with tailored designs for slate, tile, and composite materials.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Polycarbonate Roofing Installation</h4>
-                            <p>Lightweight and impact-resistant polycarbonate roofing for carports, extensions, and porches.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Sealoflex Roofing Installation</h4>
-                            <p>High-performance Sealoflex systems delivering flexible and watertight flat roof protection.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>Single Ply Membrane Roofs Installation</h4>
-                            <p>Efficient and low-maintenance single ply systems for commercial and modern residential buildings.</p>
-                        </div>
-
+            <!-- Services Section -->
+            <div class="services-section">
+                <h2>Our Roofing Services in Croydon</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Roof Installation</h3>
+                        <p>Complete new roof installations for all property types in Croydon, from traditional slate to modern systems.</p>
+                        <a href="roof-installation.html" class="service-link">Learn More</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Roof Repairs</h3>
+                        <p>Expert repair services for damaged roofs, with experience on all common roof types in the Croydon area.</p>
+                        <a href="roof-repair.html" class="service-link">Learn More</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-droplet"></i>
+                        <h3>Gutters & Drainage</h3>
+                        <p>Installation, repair, and cleaning of guttering systems to ensure proper drainage and prevent water damage to your property.</p>
+                        <a href="gutters.html" class="service-link">Learn More</a>
                     </div>
 
-                    <!-- Why Choose Us Section -->
-                    <div class="why-choose-section">
-                        <h3>Why Choose Us for Roof Installation?</h3>
-                        <ul class="benefits-list">
-                            <li>
-                                <i class="fas fa-certificate"></i>
-                                <span><strong>Experienced & Certified Technicians:</strong> Our team holds CSCS certification and specialized manufacturer approvals.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                                <span><strong>Premium Quality Materials:</strong> We use only the finest materials from trusted suppliers like Bauder and leading manufacturers.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-shield-alt"></i>
-                                <span><strong>Product-Specific Guarantees:</strong> All installations come with comprehensive warranties covering materials and workmanship.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-broom"></i>
-                                <span><strong>Clean & Tidy Worksite:</strong> We maintain a clean, safe working environment and leave your property spotless upon completion.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <span><strong>Timely Project Completion:</strong> We respect agreed timelines and communicate progress throughout the installation process.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-pound-sign"></i>
-                                <span><strong>Transparent Pricing:</strong> No hidden costs - detailed quotes with clear breakdowns of materials and labor.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Right Column - FAQ -->
-                <div class="right-column">
-                    <h3>Frequently Asked Questions</h3>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(0)">
-                            <span>How long does a roof installation take?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" id="faq-0">
-                            <p>Installation times vary depending on the roof size, complexity, and materials. A typical residential roof installation takes 3-7 days. We'll provide a detailed timeline during your consultation.</p>
-                        </div>
+                    <div class="service-card">
+                        <i class="fas fa-search"></i>
+                        <h3>Roof Inspections & Maintenance</h3>
+                        <p>Thorough inspections and preventative maintenance to extend your roof’s lifespan and catch minor issues before they escalate.</p>
+                        <a href="maintenance.html" class="service-link">Learn More</a>
                     </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(1)">
-                            <span>What materials do you recommend?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" id="faq-1">
-                            <p>Material selection depends on your property type, budget, and preferences. We'll assess your specific needs and recommend the most suitable options, from traditional slate and tiles to modern flat roofing systems.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(2)">
-                            <span>Do you handle planning permissions?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" id="faq-2">
-                            <p>We provide guidance on planning requirements and can assist with applications where necessary. Most roof replacements don't require planning permission, but we'll advise on your specific situation.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(3)">
-                            <span>What guarantees do you offer?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" id="faq-3">
-                            <p>All our installations come with comprehensive guarantees covering both materials and workmanship. Warranty periods vary by product type, with options ranging from 5 to 25 years.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(4)">
-                            <span>Can you work in all weather conditions?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" id="faq-4">
-                            <p>Safety is our priority. While we can work in light rain, we avoid extreme weather conditions. We'll reschedule if necessary and keep you informed of any weather-related delays.</p>
-                        </div>
+                    <div class="service-card">
+                        <i class="fas fa-fire"></i>
+                        <h3>Chimneys</h3>
+                        <p>Expert chimney repairs, repointing, and rebuilds to maintain structural integrity and ensure safe ventilation from your roofline.</p>
+                        <a href="chimneys.html" class="service-link">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Banner -->
-    <section class="cta-banner">
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
         <div class="container">
-            <h2>Ready to secure your home?</h2>
-            <p>Contact us today for a free, detailed quote on your roofing installation needs.</p>
-            <a href="index.html#contact-form" class="cta-banner-button">Request a Quote</a>
+            <h3>Recently Completed Project in Croydon</h3>
+            <div class="portfolio-showcase">
+                <div class="portfolio-image"></div>
+                <div class="portfolio-details">
+                    <h4>Warm Flat Roof Installation in Croydon</h4>
+                    <p>This Croydon property required a modern warm flat roof system to replace an old, poorly insulated structure. Our team installed high-performance insulation above the joists, followed by a durable waterproof membrane to ensure long-term protection against the elements. The new roof delivers excellent thermal efficiency and meets current building regulations for flat roofing systems.</p>
+                    <div class="project-specs">
+                        <p><strong>Project:</strong> Warm Flat Roof Installation in CR0</p>
+                        <p><strong>Materials:</strong> PIR Insulation, OSB Decking, Roofing Felt</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Connor and his team did a great job replacing our roof. They were prompt in coming out to give us a quote. Their price was fair. They were able to start the job quite quickly. They took care of everything the skip, scaffoldings and clean up afterwards. I will definitely hire them again for any roofing, gutter, jobs.</p>
+                <p class="testimonial-author">- Croydon Customer</p>
+            </div>
+        </div>
+    </section>
 
-     <!-- Footer -->
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Contact Your Local Croydon Roofers</h2>
+            <p>If you're in <strong>Croydon</strong> or the surrounding areas and need expert roofing advice, contact Hills Roofing LTD today for your free, no-obligation quote.</p>
+            <a href="index.html#contact" class="cta-main-button">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-content">
@@ -1058,49 +1001,6 @@
                         block: 'start'
                     });
                 }
-                navMenu.classList.remove('active');
-            });
-        });
-
-
-        // FAQ Toggle Function
-        function toggleFAQ(index) {
-            const answer = document.getElementById(`faq-${index}`);
-            const toggle = answer.previousElementSibling.querySelector('.faq-toggle');
-            
-            // Close all other FAQs
-            document.querySelectorAll('.faq-answer').forEach((item, i) => {
-                if (i !== index) {
-                    item.classList.remove('active');
-                    item.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
-                    item.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
-                }
-            });
-            
-            // Toggle current FAQ
-            if (answer.classList.contains('active')) {
-                answer.classList.remove('active');
-                toggle.classList.remove('active');
-                toggle.textContent = '+';
-            } else {
-                answer.classList.add('active');
-                toggle.classList.add('active');
-                toggle.textContent = '×';
-            }
-        }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu if open
                 navMenu.classList.remove('active');
             });
         });

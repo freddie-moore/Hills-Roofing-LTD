@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expert Roofing Services in Lewisham | Hills Roofing LTD</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
         * {
             margin: 0;
@@ -26,12 +27,17 @@
 
         /* Header */
         .header {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: #f9f9f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -44,43 +50,147 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #46495A;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
+        }
+
+        .nav-menu li:last-child {
+            margin-left: 1rem; /* Extra spacing before CTA button */
         }
 
         .nav-menu a {
             text-decoration: none;
             color: #46495A;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        /* Yellow underline hover effect */
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffc107;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .nav-menu a:hover {
-            color: #FFC107;
+            color: #46495A; /* Keep text color same */
         }
 
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 1;
+            top: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 14px 18px;
+            display: block;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a::after {
+            display: none; /* Remove underline for dropdown items */
+        }
+
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #ffc107;
+            padding-left: 24px;
+        }
+
+        /* Enhanced CTA button */
         .cta-button {
-            background: #FFC107;
-            color: #46495A;
-            padding: 12px 24px;
-            border-radius: 5px;
+            background: #ffc107;
+            color: #46495A !important;
+            padding: 10px 20px !important;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold !important;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .cta-button::after {
+            display: none !important; /* Remove underline for CTA button */
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+            background: #ffcd3c;
+            color: #46495A !important;
         }
 
         .mobile-menu-toggle {
@@ -90,14 +200,86 @@
             font-size: 1.5rem;
             color: #46495A;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        /* Dropdown arrow indicator */
+        .dropdown > a::before {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #46495A;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover > a::before {
+            border-top-color: #ffc107;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #f9f9f6;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                gap: 1.5rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: block;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                background: transparent;
+                padding-left: 1rem;
+                margin-top: 0.5rem;
+            }
+
+            .dropdown-content a {
+                padding: 8px 0;
+                border-bottom: none;
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                margin-top: 1rem;
+                text-align: center;
+            }
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(70, 73, 90, 0.7), rgba(70, 73, 90, 0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2346495A" width="1200" height="600"/><polygon fill="%23FFC107" points="0,400 200,350 400,450 600,380 800,480 1000,420 1200,500 1200,600 0,600"/><rect fill="%23F2F2F2" x="100" y="200" width="80" height="120" rx="5"/><rect fill="%23F2F2F2" x="200" y="180" width="100" height="140" rx="5"/><rect fill="%23F2F2F2" x="320" y="190" width="90" height="130" rx="5"/><rect fill="%23F2F2F2" x="450" y="170" width="85" height="150" rx="5"/><polygon fill="%2346495A" points="100,200 140,170 180,200"/><polygon fill="%2346495A" points="200,180 250,150 300,180"/><polygon fill="%2346495A" points="320,190 365,160 410,190"/><polygon fill="%2346495A" points="450,170 492.5,140 535,170"/></svg>');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
+            background: linear-gradient(135deg, #46495A, #2c2f3a);
+            height: 50vh;
             display: flex;
             align-items: center;
             text-align: center;
@@ -108,7 +290,7 @@
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             margin-bottom: 1rem;
         }
 
@@ -150,13 +332,21 @@
             margin-bottom: 3rem;
         }
 
-        .services-grid {
+        /* .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+        } */
+        .services-grid {
+            display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center all rows including last */
+    gap: 2rem;
+    padding: 2rem 0;
         }
 
         .service-card {
+            flex: 0 1 300px;
             background: #F2F2F2;
             padding: 2rem;
             border-radius: 12px;
@@ -236,18 +426,12 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+             background: url('assets/lewisham-job.webp');
+    background-size: cover;      /* Ensures the image covers the whole box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
         }
 
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%2346495A" width="400" height="300"/><rect fill="%23F2F2F2" x="50" y="100" width="120" height="80" rx="3"/><rect fill="%23F2F2F2" x="230" y="90" width="100" height="90" rx="3"/><polygon fill="%23333" points="50,100 110,70 170,100"/><polygon fill="%23333" points="230,90 280,60 330,90"/><rect fill="%234169E1" x="80" y="120" width="60" height="40"/><rect fill="%234169E1" x="250" y="110" width="60" height="40"/></svg>') center/cover;
-            opacity: 0.3;
-        }
 
         .portfolio-details {
             padding: 1rem;
@@ -293,16 +477,17 @@
         }
 
         .testimonial-card::before {
-            content: '"';
+            content: '"';   
             font-size: 6rem;
             position: absolute;
-            top: -10px;
+            top: -12px;
             left: 30px;
             color: #FFC107;
             font-family: serif;
         }
 
         .testimonial-text {
+            margin-top: 2rem;
             font-size: 1.3rem;
             line-height: 1.7;
             margin-bottom: 2rem;
@@ -408,21 +593,194 @@
                 font-size: 2rem;
             }
         }
+
+        /* Footer Styles */
+        .footer {
+            background: #46495A;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: #ffc107;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            color: #E5E5E5;
+        }
+
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #E5E5E5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffc107;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            color: #ffc107;
+            margin-right: 0.8rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #ffc107;
+            color: #46495A;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .accreditation-footer {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .accreditation-footer img {
+            height: 40px;
+            width: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .accreditation-footer img:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #5A5D6A;
+            padding-top: 2rem;
+            text-align: center;
+            color: #B5B5B5;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Ensure all footer links (including BFT) share the same style */
+.footer-bottom a {
+    color: #B5B5B5;
+    text-decoration: none;
+    transition: color 0.3s;
+    
+}
+
+
+.footer-bottom a:hover {
+    color: #FFC107;
+    text-decoration: underline;
+}
+
+.bft-link {
+    font-weight: 600;
+}
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
-            <a href="/" class="logo">Hills Roofing LTD</a>
+            <div class="logo">
+                <a href="index.html#home">
+                    <img src="assets/logo.png" alt="Hills Roofing LTD Logo" class="logo-img">
+                </a>
+            </div>
+
             <nav>
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/areas">Areas Covered</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/quote" class="cta-button">Get a Free Quote</a></li>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">Services</a>
+                        <div class="dropdown-content">
+                            <a href="roof-installation.html">Roof Installation</a>
+                            <a href="roof-repair.html">Roof Repair</a>
+                            <a href="gutters.html">Gutters</a>
+                            <a href="chimneys.html">Chimneys</a>
+                            <a href="maintenance.html">Inspections & Maintenance</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a>Areas Covered</a>
+                        <div class="dropdown-content">
+                            <a href="areas-lewisham.html">Lewisham</a>
+                            <a href="areas-croydon.html">Croydon</a>
+                            <a href="areas-purley.html">Purley</a>
+                            <a href="areas-beckenham.html">Beckenham</a>
+                            <a href="areas-bromley.html">Bromley</a>
+                            <a href="areas-tunbridge.html">Tunbridge Wells</a>
+                            <a href="areas-kent.html">Kent</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact-form" class="cta-button">Get a Free Quote</a></li>
                 </ul>
                 <button class="mobile-menu-toggle" id="mobile-toggle">
                     <i class="fas fa-bars"></i>
@@ -436,7 +794,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Lewisham's Premier Roofing Company</h1>
-                <p class="hero-subtitle">Professional roofing services for Victorian terraces and modern properties throughout SE13</p>
+                <p class="hero-subtitle">Professional roofing services in Lewisham and surrounding areas</p>
             </div>
         </div>
     </section>
@@ -446,7 +804,7 @@
         <div class="container">
             <!-- Intro Section -->
             <div class="intro-section">
-                <p>Hills Roofing LTD is proud to offer our full range of professional roofing services to residents and businesses throughout <strong>Lewisham</strong>. We understand the unique challenges of maintaining roofs in the area, from the classic Victorian slate roofs to modern flat roofing systems, and have the expertise to deliver outstanding results.</p>
+                <p>Hills Roofing LTD is proud to offer our full range of professional roofing services to residents and businesses throughout <strong>Lewisham</strong>. Please see below for more details.</p>
             </div>
 
             <!-- Services Section -->
@@ -457,33 +815,36 @@
                         <i class="fas fa-home"></i>
                         <h3>Roof Installation</h3>
                         <p>Complete new roof installations for all property types in Lewisham, from traditional slate to modern systems.</p>
-                        <a href="/services/installation" class="service-link">Learn More</a>
+                        <a href="roof-installation.html" class="service-link">Learn More</a>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-tools"></i>
                         <h3>Roof Repairs</h3>
-                        <p>Expert repair services for damaged roofs, specializing in Victorian and Edwardian properties common in Lewisham.</p>
-                        <a href="/services/repairs" class="service-link">Learn More</a>
+                        <p>Expert repair services for damaged roofs, with experience on all common roof types in the Lewisham area.</p>
+                        <a href="roof-repair.html" class="service-link">Learn More</a>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-broom"></i>
-                        <h3>Roof Cleaning</h3>
-                        <p>Professional cleaning services to maintain and restore your roof's appearance and longevity.</p>
-                        <a href="/services/cleaning" class="service-link">Learn More</a>
+                        <i class="fas fa-droplet"></i>
+                        <h3>Gutters & Drainage</h3>
+                        <p>Installation, repair, and cleaning of guttering systems to ensure proper drainage and prevent water damage to your property.</p>
+                        <a href="gutters.html" class="service-link">Learn More</a>
                     </div>
+
                     <div class="service-card">
                         <i class="fas fa-search"></i>
-                        <h3>Roof Inspections</h3>
-                        <p>Comprehensive roof surveys and inspections to identify potential issues before they become costly problems.</p>
-                        <a href="/services/inspections" class="service-link">Learn More</a>
+                        <h3>Roof Inspections & Maintenance</h3>
+                        <p>Thorough inspections and preventative maintenance to extend your roof’s lifespan and catch minor issues before they escalate.</p>
+                        <a href="maintenance.html" class="service-link">Learn More</a>
                     </div>
+
                     <div class="service-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Roof Maintenance</h3>
-                        <p>Regular maintenance programs to keep your Lewisham property's roof in optimal condition year-round.</p>
-                        <a href="/services/maintenance" class="service-link">Learn More</a>
+                        <i class="fas fa-fire"></i>
+                        <h3>Chimneys</h3>
+                        <p>Expert chimney repairs, repointing, and rebuilds to maintain structural integrity and ensure safe ventilation from your roofline.</p>
+                        <a href="chimneys.html" class="service-link">Learn More</a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -493,19 +854,16 @@
         <div class="container">
             <h3>Recently Completed Project in Lewisham</h3>
             <div class="portfolio-showcase">
-                <div class="portfolio-image">
-                    <span>Premium Welsh Slate Installation<br>Victorian Terrace, SE13</span>
-                </div>
+                <div class="portfolio-image"></div>
                 <div class="portfolio-details">
-                    <h4>Full Roof Replacement Success Story</h4>
-                    <p>This beautiful Victorian terrace in Lewisham required a complete roof replacement due to age and weather damage. Our team carefully removed the old materials and installed premium Welsh slate, maintaining the property's historic character while ensuring modern weatherproofing standards.</p>
+                    <h4>Velux Window Replacement in Lewisham</h4>
+                    <p>This Lewisham property needed a replacement for an aging Velux window. Our team removed the old unit and installed a brand-new Velux window, improving both insulation and natural light. The new fitting was completed with precision to ensure a perfect seal and seamless integration with the existing roof structure.</p>
                     <div class="project-specs">
-                        <p><strong>Project:</strong> Full Roof Replacement on a Victorian Terrace in SE13</p>
-                        <p><strong>Materials:</strong> Welsh Slate</p>
-                        <p><strong>Duration:</strong> 5 days</p>
-                        <p><strong>Guarantee:</strong> 15-year comprehensive warranty</p>
+                        <p><strong>Project:</strong> Velux Window Replacement in SE13</p>
+                        <p><strong>Materials:</strong> Velux Roof Window</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -514,8 +872,8 @@
     <section class="testimonial-section">
         <div class="container">
             <div class="testimonial-card">
-                <p class="testimonial-text">Connor and his team did a fantastic job on our roof repair in Lewisham. Professional, punctual, and the quality of work was second to none.</p>
-                <p class="testimonial-author">- Sarah P., Lewisham</p>
+                <p class="testimonial-text">Connor did a fantastic job repairing our flat roof. From the first visit, he was professional, punctual, and clearly knew what he was doing. He explained the problem in simple terms and offered a fair quote. The work was completed quickly and to a high standard, with everything left clean and tidy afterwards. We’ve had no issues since, and the roof looks great. Would definitely recommend Connor to anyone needing roofing work – reliable, honest, and skilled.</p>
+                <p class="testimonial-author">- Lewisham Customer</p>
             </div>
         </div>
     </section>
@@ -525,9 +883,87 @@
         <div class="container">
             <h2>Contact Your Local Lewisham Roofers</h2>
             <p>If you're in <strong>Lewisham</strong> or the surrounding areas and need expert roofing advice, contact Hills Roofing LTD today for your free, no-obligation quote.</p>
-            <a href="/contact" class="cta-main-button">Get a Free Quote</a>
+            <a href="index.html#contact" class="cta-main-button">Get a Free Quote</a>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h4>Hills Roofing LTD</h4>
+                    <p>Your trusted roofing experts serving Croydon, South East London, and Kent. Quality craftsmanship with guaranteed results on every project.</p>
+                    <div class="accreditation-footer">
+                        <img src="assets/bauderapproved.jpeg" alt="Bauder Approved">
+                        <img src="assets/constructionlinegold.png" alt="Construction Line Gold">
+                        <img src="assets/cscs.png" alt="CSCS">
+                        <img src="assets/ukata.webp" alt="UKATA">
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <div class="contact-info">
+    <i class="fas fa-phone"></i>
+    <a href="tel:+447713778909">+44 7713 778 909</a>
+</div>
+                    <div class="contact-info">
+    <i class="fas fa-envelope"></i>
+    <a href="mailto:hillsroofingltd@outlook.com">hillsroofingltd@outlook.com</a>
+</div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Serving Croydon & Surrounding Areas</span>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="roof-installation.html">New Roof Installations</a></li>
+                        <li><a href="roof-repair.html">Roof Repairs</a></li>
+                        <li><a href="gutters.html">Gutters & Drainage</a></li>
+                        <li><a href="chimneys.html">Chimney Services</a></li>
+                        <li><a href="maintenance.html">Inspections & Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Areas Covered -->
+                <div class="footer-section">
+                    <h4>Areas We Cover</h4>
+                    <ul>
+                        <li><a href="areas-croydon.html">Croydon</a></li>
+                        <li><a href="areas-lewisham.html">Lewisham</a></li>
+                        <li><a href="areas-purley.html">Purley</a></li>
+                        <li><a href="areas-beckenham.html">Beckenham</a></li>
+                        <li><a href="areas-bromley.html">Bromley</a></li>
+                        <li><a href="areas-tunbridge.html">Tunbridge Wells</a></li>
+                        <li><a href="areas-kent.html">Kent</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-links">
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms & Conditions</a>
+                        <a href="sitemap.xml">Sitemap</a>
+                    </div>
+                    <div>
+                        <p>&copy; 2025 Hills Roofing LTD. All rights reserved. | Website created and maintained by 
+  <a href="https://www.bftmarketing.co.uk" target="_blank" rel="noopener noreferrer" class="bft-link">BFT Marketing</a>
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Mobile menu toggle
@@ -536,6 +972,23 @@
 
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+        });
+
+        // Enhanced scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navMenu.classList.remove('active');
+            }
         });
 
         // Smooth scrolling for anchor links
@@ -549,7 +1002,6 @@
                         block: 'start'
                     });
                 }
-                // Close mobile menu if open
                 navMenu.classList.remove('active');
             });
         });
