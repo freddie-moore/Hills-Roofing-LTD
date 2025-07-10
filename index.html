@@ -1198,12 +1198,7 @@
                     <p>Get a free quote for professional roofing services across Croydon, South East London & Kent</p>
                 </div>
 
-                <form class="contact-form" id="roofing-quote-form" action="https://formsubmit.co/info@bftmarketing.co.uk">
-                    <div class="success-message" id="success-message">
-                        <i class="fas fa-check-circle"></i>
-                        Thank you for your inquiry! We've received your request and will contact you within 24 hours to discuss your roofing needs.
-                    </div>
-
+                <form class="contact-form" action="https://formsubmit.co/info@bftmarketing.co.uk" method="POST">
                     <div class="form-group">
                         <label for="fullName" class="required">Full Name</label>
                         <input type="text" id="fullName" name="fullName" required>
@@ -1363,48 +1358,6 @@
                 }
                 navMenu.classList.remove('active');
             });
-        });
-
-        // Form submission
-        document.getElementById('roofing-quote-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form elements
-            const form = this;
-            const submitButton = form.querySelector('.submit-button');
-            const successMessage = document.getElementById('success-message');
-            const buttonText = submitButton.querySelector('.button-text');
-            
-            // Add submitting state
-            form.classList.add('form-submitting');
-            submitButton.disabled = true;
-            buttonText.textContent = 'Sending...';
-            
-            // Simulate form submission (replace with actual form submission logic)
-            setTimeout(() => {
-                // Show success message
-                successMessage.classList.add('show');
-                
-                // Reset form
-                form.reset();
-                
-                // Remove submitting state
-                form.classList.remove('form-submitting');
-                submitButton.disabled = false;
-                buttonText.textContent = 'Get My Free Quote';
-                
-                // Scroll to success message
-                successMessage.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-                
-                // Hide success message after 10 seconds
-                setTimeout(() => {
-                    successMessage.classList.remove('show');
-                }, 10000);
-                
-            }, 2000);
         });
 
         // Phone number formatting
