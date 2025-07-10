@@ -1205,7 +1205,7 @@
                     </div>
 
                     <input type="hidden" name="_subject" value="New Roofing Customer Enquiry">
-                    <input type="hidden" name="_next" value="https://hills-roofing-ltd.pages.dev/index.html">
+                    <input type="hidden" name="_next" value="https://hills-roofing-ltd.pages.dev/#contact-form?submitted=true">
                     <input type="hidden" name="_autoresponse" value="Thank you for your enquiry! We aim to respond to all customer enquiries within 24 hours.">
 
                     <div class="form-row">
@@ -1370,6 +1370,32 @@
             if (value.length > 11) value = value.slice(0, 11);
             e.target.value = value;
         });
+
+        // Check if the page was loaded with the success parameter
+        function checkForSuccessParameter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const submitted = urlParams.get('submitted');
+            
+            if (submitted === 'true') {
+                // Show the success message
+                const successMessage = document.getElementById('success-message');
+                successMessage.classList.add('show');
+                
+                // Hide the form
+                const form = document.querySelector('.contact-form');
+                form.style.display = 'none';
+                
+                // Optionally, clean up the URL by removing the parameter
+                // This prevents the success message from showing if the user refreshes
+                if (window.history.replaceState) {
+                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({}, document.title, cleanUrl);
+                }
+            }
+        }
+
+        // Run the check when the page loads
+        document.addEventListener('DOMContentLoaded', checkForSuccessParameter);
     </script>
 </body>
 </html>
