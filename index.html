@@ -1392,10 +1392,10 @@
                 console.log('Success message element:', successMessage);
                 
                 // This prevents the success message from showing if the user refreshes
-                if (window.history.replaceState) {
-                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                    window.history.replaceState({}, document.title, cleanUrl);
-                }
+                // if (window.history.replaceState) {
+                //     const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                //     window.history.replaceState({}, document.title, cleanUrl);
+                // }
             }
         }
 
