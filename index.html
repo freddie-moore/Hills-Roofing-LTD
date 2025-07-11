@@ -1315,7 +1315,6 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <div class="footer-links">
-                        <a href="privacy.html">Privacy Policy</a>
                         <a href="terms.html">Terms & Conditions</a>
                         <a href="sitemap.xml">Sitemap</a>
                     </div>
@@ -1390,12 +1389,6 @@
                 const successMessage = document.getElementById('success-message');
                 successMessage.classList.add('show');
                 console.log('Success message element:', successMessage);
-                
-                // This prevents the success message from showing if the user refreshes
-                // if (window.history.replaceState) {
-                //     const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                //     window.history.replaceState({}, document.title, cleanUrl);
-                // }
             }
         }
 
