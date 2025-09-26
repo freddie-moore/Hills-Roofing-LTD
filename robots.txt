@@ -1,0 +1,19 @@
+# robots.txt for https://hillsroofingltd.com/
+
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+
+# Block common admin / backend areas (if they exist)
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /cart/
+Disallow: /checkout/
+
+# Crawl-delay for Bing to avoid server overload (optional)
+User-agent: Bingbot
+Crawl-delay: 10
+
+# Sitemap location (make sure sitemap.xml exists at this path)
+Sitemap: https://hillsroofingltd.com/sitemap.xml
